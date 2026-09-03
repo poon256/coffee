@@ -1,0 +1,175 @@
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar container */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #4e3c2e; /* Brown color */
+    padding: 10px 20px;
+    color: white;
+}
+
+/* Logo */
+.navbar .logo {
+    margin-right: 20px;
+}
+
+.navbar .logo img {
+    height: 40px;
+}
+
+/* Menu */
+.navbar .menu {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-grow: 1;
+}
+
+.navbar .menu li {
+    position: relative;
+}
+
+.navbar .menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px 10px;
+    display: block;
+}
+
+.navbar .menu a:hover {
+    background-color: #3a2a1e;
+    border-radius: 4px;
+}
+
+.menu li:hover .dropdown-content {
+    display: block;
+}
+
+/* Right-aligned item */
+.menu .right {
+    margin-left: auto;
+    text-align:  end;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .menu {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+.img{
+    text-align: center;
+    background-attachment: fixed;
+
+}
+
+.table{
+    top:50%; left: 50%;
+
+}
+.h3{
+    text-align: center;
+}
+.h2{
+    color:#4e3c2e;
+}
+.h1{
+    color: #4e3c2e;
+}
+.com{
+    line-height: 50px;
+    background-attachment: fixed;
+    text-align:center;
+
+  }
+
+  /* Container for cards */
+  .card-container {
+    display: flex; /* Use flexbox */
+    gap: 16px; /* Space between cards */
+    flex-wrap: wrap; /* Allow wrapping to the next row if there's no space */
+    justify-content: center; /* Center cards horizontally */
+    padding: 16px; /* Padding around the container */
+    background-color: #f9f9f9; /* Optional background color */
+    background-attachment: fixed;
+  }
+  .card_about {
+    width: 300px;
+    height: 420px;
+    text-align: left;
+    padding: 15px;
+    background-color: #e9e9e9;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 6px, 
+                rgba(0, 0, 0, 0.3) 0px 10px 15px -3px, 
+                rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 6px 10px, 
+                rgba(0, 0, 0, 0.4) 0px 15px 20px -5px, 
+                rgba(0, 0, 0, 0.3) 0px -5px 0px inset;
+}
+.pb {
+    width: 200px;
+    font-size: 30px;
+    text-align: center;
+}
+.card a {
+    color: #fff;
+    text-decoration: none;
+    font-size:25px;
+    line-height: 1.8
+}
+.card-text  {
+    font-size: 25px;
+    height: 300px; 
+    text-align: center;
+    border: none;
+    display: flex;
+    color:#4e3c2e
+
+}
+.card-button  {
+    height: 180px;
+    border: none;
+    padding: -10px 0px;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+}
+.card-text1  {
+    width: 180px;
+    height: 400px;
+    float: left;
+}
+
+.card-container2 {
+    display: flex; /* Use flexbox */
+    gap: 16px; /* Space between cards */
+    flex-wrap: wrap; /* Allow wrapping to the next row if there's no space */
+    justify-content: center; /* Center cards horizontally */
+    padding: 16px; /* Padding around the container */
+    background-color: #b6faff91; /* Optional background color */
+    text-align: left;
+  }
