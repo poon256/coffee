@@ -109,12 +109,9 @@ $sql = "select
             payroll.salary as salary,
             payroll.year as year,
             payroll.status as status
-
         from payroll
-
         left join employee_info
         on employee_info.id = payroll.emp_id
-
         where 1=1";
 
 

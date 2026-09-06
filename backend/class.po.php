@@ -28,11 +28,6 @@ class po
                 <input type='button' value='Add' onclick='window.open("index.php?option=po&task=add","_self")'>
                 <?php
 				}
-				if ($acl > '3') {
-				?>
-                <input type='button' value='Print' onclick='window.open("point.php?cat=po&typ=all","_self")'>
-                <?php
-				}
 				?>
                 <input type="hidden" name="option" value="po">
                 <input type="hidden" name="task" value="def">

@@ -28,12 +28,6 @@ class acc
                         <input type='button' value='Add' onclick='window.open("index.php?option=acc&task=edit&id=0","_self")'>
 					<?php
 					}
-					if ($acl > '3')
-					{
-					?>
-                        <input type='button' value='Print' onclick='window.open("print.php?cat=acc&typ=all","_self")'>
-					<?php
-					}
 				?>
                 <input type='hidden' name='option' value='acc'>
                 <input type='hidden' name='task' value='def'>

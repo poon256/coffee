@@ -34,12 +34,6 @@ class batch
                 <input type='button' value='Prod' onclick='window.open("index.php?option=batch&task=prod&id=0","_self")'>
                 <?php
 				}
-
-				if ($acl > '3') {
-				?>
-                <input type='button' value='batchint' onclick='window.open("print.php?cat=batch&typ=all","_self")'>
-                <?php
-				}
 				?>
                 <input type="hidden" name="option" value="batch">
                 <input type="hidden" name="task" value="def">

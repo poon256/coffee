@@ -28,11 +28,6 @@ class receipt
                 <input type='button' value='Add' onclick='window.open("index.php?option=receipt&task=add","_self")'>
                 <?php
 				}
-				if ($acl > '3') {
-				?>
-                <input type='button' value='print' onclick='window.open("print.php?cat=receipt&typ=all","_self")'>
-                <?php
-				}
 				?>
                 <input type="hidden" name="option" value="receipt">
                 <input type="hidden" name="task" value="def">
@@ -436,7 +431,7 @@ class receipt
 		$conn = new connect();
 		$sql = "update `receipt` set `status` = '2', `app_date` = '".$app_date."', `app_date` = '".$app_date."', `uaid` = '".$_SESSION['uid']."'  where `id` = '".$id."'";
 		$conn->query($sql);
-        $sql = "insert into acc set typ = '4', action = 'receipt', date = '".date('Y-m-d')."', detail = 'Data from receipt Rec#".$id."', `uid` = '".$_SESSION['uid']."'";
+        $sql = "insert into acc set typ = '3', action = 'receipt', date = '".date('Y-m-d')."', detail = 'Data from receipt Rec#".$id."', `uid` = '".$_SESSION['uid']."'";
         $acc_id = $conn->query_lastid($sql);
         $sql = "insert into `acc_detail` set `acc_id` = '".$acc_id."', `typ_id` = '9', `typ` = '1', `value` = '".$value."'";
         $res = $conn->query($sql);

@@ -17,7 +17,7 @@ session_start();
     <?php include 'menu.php'; ?>
 
     <div class="card-container">
-        <p class="pb">KEEN COFFEE EXPERIENCE</p>
+        <p class="pb">Coffee Test EXPERIENCE</p>
         <button class="btn-custom">
             <img src="../img/basket.png" alt="Product" style="width: 50px; height: 50px; margin-bottom: 10px;" /><br />
             <b>สินค้าคุณภาพ</b><br /><br />

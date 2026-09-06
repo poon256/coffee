@@ -21,7 +21,6 @@ class logs
 			<form action='index.php' method='get'>
 			<input name='searcher' value='<?php echo $searcher;?>'>
 			<input type='submit' value='Search'>
-			<input type='button' value='Print' onclick='window.open("print.php?cat=logs&typ=all","_self")'>
 			<input type='hidden' name='option' value='logs'>
 			<input type='hidden' name='task' value='def'>
 			</form>

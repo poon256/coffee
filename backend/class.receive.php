@@ -28,11 +28,6 @@ class receive
                 <input type='button' value='Add' onclick='window.open("index.php?option=receive&task=add","_self")'>
                 <?php
 				}
-				if ($acl > '3') {
-				?>
-                <input type='button' value='Print' onclick='window.open("receiveint.php?cat=receive&typ=all","_self")'>
-                <?php
-				}
 				?>
                 <input type="hidden" name="option" value="receive">
                 <input type="hidden" name="task" value="def">

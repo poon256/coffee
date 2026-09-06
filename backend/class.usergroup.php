@@ -30,12 +30,6 @@ class usergroup
 						<input type='button' value='Add' onclick='window.open("index.php?option=usergroup&task=edit&id=0","_self")'>
 					<?php
 					}
-					if ($acl > '3')
-					{
-					?>
-						<input type='button' value='Print' onclick='window.open("print.php?cat=usergroup&typ=all","_self")'>
-					<?php
-					}
 				?>
                 <input type='hidden' name='option' value='usergroup'>
                 <input type='hidden' name='task' value='def'>

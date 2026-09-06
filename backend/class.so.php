@@ -28,11 +28,6 @@ class so
                 <input type='button' value='Add' onclick='window.open("index.php?option=so&task=add","_self")'>
                 <?php
 				}
-				if ($acl > '3') {
-				?>
-                <input type='button' value='print' onclick='window.open("print.php?cat=so&typ=all","_self")'>
-                <?php
-				}
 				?>
                 <input type="hidden" name="option" value="so">
                 <input type="hidden" name="task" value="def">

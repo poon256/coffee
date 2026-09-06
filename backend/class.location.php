@@ -29,11 +29,6 @@ class location
                 <input type='button' value='Add' onclick='window.open("index.php?option=location&task=edit&id=0","_self")'>
                 <?php
 				}
-				if ($acl > '3') {
-				?>
-                <input type='button' value='Print' onclick='window.open("print.php?cat=location&typ=all","_self")'>
-                <?php
-				}
 				?>
                 <input type='hidden' name='option' value='location'>
                 <input type='hidden' name='task' value='def'>

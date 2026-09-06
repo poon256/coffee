@@ -53,7 +53,7 @@ while ($cdr = $res->fetch())
 
 <div class="product-card">
 
-    <img src="../img/CoffeeCup.png" class="product-image">
+    <img src="../img/images.jpg" class="product-image">
 
     <h6>
         <?php echo $cdr['name']; ?>

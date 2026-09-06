@@ -28,11 +28,6 @@ class quotation
                 <input type='button' value='Add' onclick='window.open("index.php?option=quotation&task=edit&id=0","_self")'>
                 <?php
 				}
-				if ($acl > '3') {
-				?>
-                <input type='button' value='quotationint' onclick='window.open("quotationint.php?cat=quotation&typ=all","_self")'>
-                <?php
-				}
 				?>
                 <input type="hidden" name="option" value="quotation">
                 <input type="hidden" name="task" value="def">
