@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 07, 2026 at 04:42 PM
+-- Generation Time: Sep 07, 2026 at 08:13 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -42,38 +42,9 @@ CREATE TABLE `acc` (
 --
 
 INSERT INTO `acc` (`id`, `uid`, `date`, `typ`, `action`, `detail`, `status`) VALUES
-(1, 1, '2026-08-26', 4, 'Payment', 'Data from Payment Rec#1', 1),
-(2, 1, '2026-08-28', 5, 'Production', 'Data from Production#1', 1),
-(3, 1, '2026-08-28', 5, 'Production', 'Data from Production#2', 1),
-(4, 1, '2026-08-28', 5, 'Production', 'Data from Production#3', 1),
-(5, 1, '2026-08-28', 5, 'Production', 'Data from Production#4', 1),
-(6, 1, '2026-08-28', 5, 'Production', 'Data from Production#5', 1),
-(7, 1, '2026-08-28', 1, 'receipt', 'Data from receipt Rec#1', 1),
-(8, 1, '2026-08-28', 5, 'Production', 'Data from Production#6', 1),
-(9, 1, '2026-08-28', 5, 'Production', 'Data from Production#7', 1),
-(10, 1, '2026-08-28', 5, 'Production', 'Data from Production#8', 1),
-(11, 1, '2026-08-30', 4, 'receipt', 'Data from receipt Rec#1', 1),
-(12, 1, '2026-08-30', 4, 'receipt', 'Data from receipt Rec#2', 1),
-(13, 1, '2026-08-30', 4, 'receipt', 'Data from receipt Rec#3', 1),
-(14, 1, '2026-08-31', 4, 'Payment', 'Payroll test ja', 1),
-(15, 1, '2026-08-31', 4, 'Payment', 'Payroll test ja', 1),
-(16, 1, '2026-08-31', 4, 'Payment', 'Payroll test ja', 1),
-(17, 1, '2026-09-02', 5, 'Production', 'Data from Production#9', 1),
-(18, 1, '2026-09-02', 5, 'Production', 'Data from Production#10', 1),
-(19, 1, '2026-09-02', 5, 'Production', 'Data from Production#14', 1),
-(20, 1, '2026-09-02', 5, 'Production', 'Data from Production#15', 1),
-(21, 1, '2026-09-02', 5, 'Production', 'Data from Production#16', 1),
-(22, 1, '2026-09-02', 5, 'Production', 'Data from Production#17', 1),
-(23, 1, '2026-09-02', 5, 'Production', 'Data from Production#18', 1),
-(24, 1, '2026-09-02', 5, 'Production', 'Data from Production#19', 1),
-(25, 1, '2026-09-02', 5, 'Production', 'Data from Production#20', 1),
-(26, 1, '2026-09-02', 5, 'Production', 'Data from Production#21', 1),
-(27, 1, '2026-09-02', 5, 'Production', 'Data from Production#22', 1),
-(28, 1, '2026-09-06', 3, 'receipt', 'Data from receipt Rec#4', 1),
-(29, 1, '2026-09-06', 4, 'Payment', 'Data from Payment Rec#1', 1),
-(30, 1, '2026-09-06', 3, 'receipt', 'Data from receipt Rec#1', 1),
-(31, 1, '2026-09-06', 5, 'Production', 'Data from Production#1', 1),
-(32, 1, '2026-09-06', 4, 'Payment', 'Payroll Somchai Test', 1);
+(1, 1, '2026-09-07', 4, 'Payment', 'Data from Payment Rec#1', 1),
+(2, 1, '2026-09-07', 3, 'receipt', 'Data from receipt Rec#1', 1),
+(3, 1, '2026-09-07', 5, 'Production', 'Data from Production#1', 1);
 
 -- --------------------------------------------------------
 
@@ -96,72 +67,12 @@ CREATE TABLE `acc_detail` (
 --
 
 INSERT INTO `acc_detail` (`id`, `acc_id`, `typ_id`, `typ`, `value`, `detail`, `status`) VALUES
-(1, 1, 9, 1, 10000.00, '', 1),
-(2, 1, 2, 2, 10000.00, '', 1),
-(3, 2, 10, 1, 50.00, '', 1),
-(4, 2, 8, 2, 50.00, '', 1),
+(1, 1, 9, 1, 250.00, '', 1),
+(2, 1, 4, 2, 250.00, '', 1),
+(3, 2, 9, 1, 0.00, '', 1),
+(4, 2, 3, 2, 0.00, '', 1),
 (5, 3, 10, 1, 250.00, '', 1),
-(6, 3, 8, 2, 250.00, '', 1),
-(7, 4, 10, 1, 500.00, '', 1),
-(8, 4, 8, 2, 500.00, '', 1),
-(9, 5, 10, 1, 200.00, '', 1),
-(10, 5, 8, 2, 200.00, '', 1),
-(11, 6, 10, 1, 100.00, '', 1),
-(12, 6, 8, 2, 100.00, '', 1),
-(13, 7, 9, 1, 0.00, '', 1),
-(14, 7, 1, 2, 0.00, '', 1),
-(15, 6, 1, 1, 0.00, '', 1),
-(16, 7, 1, 1, 180.00, '', 1),
-(17, 8, 10, 1, 200.00, '', 1),
-(18, 8, 8, 2, 200.00, '', 1),
-(19, 8, 2, 2, 360.00, '', 1),
-(20, 9, 10, 1, 50.00, '', 1),
-(21, 9, 8, 2, 50.00, '', 1),
-(22, 10, 10, 1, 250.00, '', 1),
-(23, 10, 8, 2, 250.00, '', 1),
-(24, 11, 9, 1, 0.00, '', 1),
-(25, 11, 1, 2, 0.00, '', 1),
-(26, 12, 9, 1, 0.00, '', 1),
-(27, 12, 1, 2, 0.00, '', 1),
-(28, 13, 9, 1, 0.00, '', 1),
-(29, 13, 1, 2, 0.00, '', 1),
-(30, 14, 9, 1, 50.00, 'Salary Payment', 1),
-(31, 15, 9, 1, 180.00, '', 1),
-(32, 15, 1, 2, 180.00, '', 1),
-(33, 16, 9, 1, 100.00, '', 1),
-(34, 16, 1, 2, 100.00, '', 1),
-(35, 17, 10, 1, 250.00, '', 1),
-(36, 17, 8, 2, 250.00, '', 1),
-(37, 18, 10, 1, 0.00, '', 1),
-(38, 18, 8, 2, 0.00, '', 1),
-(39, 19, 10, 1, 180.00, '', 1),
-(40, 19, 8, 2, 180.00, '', 1),
-(41, 20, 10, 1, 1800.00, '', 1),
-(42, 20, 8, 2, 1800.00, '', 1),
-(43, 21, 10, 1, 180.00, '', 1),
-(44, 21, 8, 2, 180.00, '', 1),
-(45, 22, 10, 1, 900.00, '', 1),
-(46, 22, 8, 2, 900.00, '', 1),
-(47, 23, 10, 1, 250.00, '', 1),
-(48, 23, 8, 2, 250.00, '', 1),
-(49, 24, 10, 1, 250.00, '', 1),
-(50, 24, 8, 2, 250.00, '', 1),
-(51, 25, 10, 1, 150.00, '', 1),
-(52, 25, 8, 2, 150.00, '', 1),
-(53, 26, 10, 1, 50.00, '', 1),
-(54, 26, 8, 2, 50.00, '', 1),
-(55, 27, 10, 1, 50.00, '', 1),
-(56, 27, 8, 2, 50.00, '', 1),
-(57, 28, 9, 1, 0.00, '', 1),
-(58, 28, 3, 2, 0.00, '', 1),
-(59, 29, 9, 1, 50.00, '', 1),
-(60, 29, 4, 2, 50.00, '', 1),
-(61, 30, 9, 1, 0.00, '', 1),
-(62, 30, 3, 2, 0.00, '', 1),
-(63, 31, 10, 1, 50.00, '', 1),
-(64, 31, 8, 2, 50.00, '', 1),
-(65, 32, 9, 1, 5000.00, '', 1),
-(66, 32, 1, 2, 5000.00, '', 1);
+(6, 3, 8, 2, 250.00, '', 1);
 
 -- --------------------------------------------------------
 
@@ -682,30 +593,8 @@ CREATE TABLE `batch` (
 --
 
 INSERT INTO `batch` (`id`, `name`, `detail`, `uid`, `uaid`, `date`, `adate`, `status`) VALUES
-(2, '', '', 1, 1, '2026-08-30', '0000-00-00', 2),
-(3, '', '', 1, 1, '2026-08-30', '0000-00-00', 2),
-(4, '', '', 1, 1, '2026-08-30', '0000-00-00', 2),
-(5, '', '', 1, 0, '2026-08-31', '0000-00-00', 0),
-(6, '', '', 1, 0, '2026-08-31', '0000-00-00', 0),
-(7, '', '', 1, 0, '2026-08-31', '0000-00-00', 0),
-(8, '', '', 1, 0, '2026-08-31', '0000-00-00', 1),
-(9, '', '', 1, 0, '2026-08-31', '0000-00-00', 1),
-(10, '', '', 1, 1, '2026-08-31', '0000-00-00', 2),
-(11, '', '', 1, 1, '2026-08-31', '0000-00-00', 2),
-(12, '', '', 1, 1, '2026-08-31', '0000-00-00', 2),
-(13, '', '', 1, 1, '2026-08-31', '0000-00-00', 2),
-(14, '', '', 1, 1, '2026-08-31', '0000-00-00', 2),
-(15, '', '', 1, 1, '2026-09-01', '0000-00-00', 2),
-(16, '', '', 1, 1, '2026-09-02', '0000-00-00', 2),
-(17, '', '', 1, 1, '2026-09-02', '0000-00-00', 2),
-(18, '', '', 1, 1, '2026-09-02', '0000-00-00', 2),
-(19, '', '', 1, 1, '2026-09-02', '0000-00-00', 2),
-(20, '', '', 1, 1, '2026-09-02', '0000-00-00', 2),
-(21, '', '', 1, 1, '2026-09-02', '0000-00-00', 2),
-(22, '', '', 1, 1, '2026-09-02', '0000-00-00', 2),
-(23, '', '', 1, 1, '2026-09-02', '0000-00-00', 2),
-(24, '', '', 1, 1, '2026-09-06', '0000-00-00', 2),
-(25, '', '', 1, 1, '2026-09-06', '0000-00-00', 2);
+(1, '', '', 1, 1, '2026-09-07', '0000-00-00', 2),
+(2, '', '', 1, 1, '2026-09-07', '0000-00-00', 2);
 
 -- --------------------------------------------------------
 
@@ -727,42 +616,8 @@ CREATE TABLE `batch_detail` (
 --
 
 INSERT INTO `batch_detail` (`id`, `batch_id`, `inventory_id`, `typ`, `num`, `status`) VALUES
-(2, 2, 4, 2, 1, 1),
-(3, 3, 6, 1, 10, 1),
-(4, 4, 6, 1, 5, 1),
-(5, 5, 6, 1, 10, 0),
-(6, 5, 6, 1, 5, 0),
-(7, 6, 5, 2, 1, 0),
-(8, 6, 5, 2, 2, 1),
-(9, 5, 6, 1, 6, 0),
-(10, 5, 6, 1, 7, 1),
-(11, 7, 4, 2, 1, 0),
-(12, 7, 4, 2, 1, 1),
-(13, 7, 5, 2, 1, 1),
-(14, 8, 6, 1, 50, 0),
-(15, 8, 6, 1, 51, 0),
-(16, 8, 6, 1, 52, 1),
-(17, 9, 4, 2, 5, 0),
-(18, 9, 4, 2, 5, 1),
-(19, 9, 5, 2, 1, 1),
-(20, 10, 6, 1, 1, 1),
-(21, 11, 6, 1, 5, 0),
-(22, 11, 6, 1, 1, 1),
-(23, 12, 6, 1, 55, 1),
-(24, 13, 6, 1, 50, 1),
-(25, 14, 6, 1, 1, 1),
-(26, 15, 6, 1, 100, 1),
-(27, 16, 6, 1, 50, 1),
-(28, 17, 6, 1, 40, 1),
-(29, 18, 6, 1, 1, 1),
-(30, 19, 6, 1, 10, 1),
-(31, 20, 6, 1, 1, 1),
-(32, 21, 6, 1, 1, 0),
-(33, 21, 6, 1, 5, 1),
-(34, 22, 6, 1, 4, 1),
-(35, 23, 6, 1, 4, 1),
-(36, 24, 6, 1, 10, 1),
-(37, 25, 4, 2, 10, 1);
+(1, 1, 6, 1, 100, 1),
+(2, 2, 5, 2, 10, 1);
 
 -- --------------------------------------------------------
 
@@ -844,30 +699,8 @@ CREATE TABLE `farming` (
 --
 
 INSERT INTO `farming` (`id`, `batch_id`, `uid`, `uaid`, `date`, `adate`, `detail`, `status`) VALUES
-(1, 2, 1, 0, '2026-08-30', '0000-00-00', '', 1),
-(2, 3, 1, 1, '2026-08-30', '0000-00-00', '', 2),
-(3, 4, 1, 0, '2026-08-30', '0000-00-00', '', 1),
-(4, 0, 1, 1, '2026-08-31', '0000-00-00', '', 2),
-(5, 0, 1, 0, '2026-08-31', '0000-00-00', '', 1),
-(6, 0, 1, 0, '2026-08-31', '0000-00-00', '', 1),
-(7, 0, 1, 0, '2026-08-31', '0000-00-00', '', 1),
-(8, 0, 1, 0, '2026-08-31', '0000-00-00', '', 1),
-(9, 0, 1, 0, '2026-08-31', '0000-00-00', '', 1),
-(10, 10, 1, 1, '2026-08-31', '0000-00-00', '', 2),
-(11, 11, 1, 1, '2026-08-31', '0000-00-00', '', 2),
-(12, 12, 1, 1, '2026-08-31', '0000-00-00', '', 2),
-(13, 13, 1, 1, '2026-08-31', '0000-00-00', '', 2),
-(14, 14, 1, 1, '2026-08-31', '0000-00-00', '', 2),
-(15, 15, 1, 1, '2026-09-01', '0000-00-00', '', 2),
-(16, 16, 1, 1, '2026-09-02', '0000-00-00', '', 2),
-(17, 17, 1, 1, '2026-09-02', '0000-00-00', '', 2),
-(18, 18, 1, 1, '2026-09-02', '0000-00-00', '', 2),
-(19, 19, 1, 1, '2026-09-02', '0000-00-00', '', 2),
-(20, 20, 1, 1, '2026-09-02', '0000-00-00', '', 2),
-(21, 21, 1, 1, '2026-09-02', '0000-00-00', '', 2),
-(22, 22, 1, 1, '2026-09-02', '0000-00-00', '', 2),
-(23, 23, 1, 1, '2026-09-02', '0000-00-00', '', 2),
-(24, 25, 1, 0, '2026-09-06', '0000-00-00', '', 1);
+(1, 2, 1, 1, '2026-09-07', '0000-00-00', '', 2),
+(2, 1, 1, 0, '2026-09-07', '0000-00-00', '', 1);
 
 -- --------------------------------------------------------
 
@@ -891,45 +724,8 @@ CREATE TABLE `farming_detail` (
 --
 
 INSERT INTO `farming_detail` (`id`, `farming_id`, `inventory_id`, `num`, `typ`, `loss`, `detail`, `status`) VALUES
-(1, 1, 4, 1, 0, 0, '', 1),
-(2, 2, 6, 10, 0, 0, '', 0),
-(3, 3, 6, 5, 0, 0, '', 1),
-(4, 6, 6, 1, 0, 0, '', 1),
-(5, 7, 6, 1, 0, 0, '', 1),
-(6, 8, 6, 1, 0, 0, '', 1),
-(7, 9, 6, 1, 0, 0, '', 1),
-(8, 10, 6, 1, 0, 0, '', 1),
-(9, 11, 6, 1, 0, 0, '', 0),
-(10, 2, 6, 10, 0, 0, '', 0),
-(11, 2, 6, 5, 0, 0, '', 0),
-(12, 2, 6, 10, 0, 0, '', 0),
-(13, 2, 6, 11, 0, 0, '', 0),
-(14, 11, 6, 2, 0, 0, '', 1),
-(15, 2, 6, 10, 0, 0, '', 0),
-(16, 12, 6, 55, 0, 0, '', 0),
-(17, 12, 6, 50, 0, 0, '', 0),
-(18, 12, 6, 1, 0, 0, '', 1),
-(19, 2, 6, 11, 0, 0, '', 1),
-(20, 13, 6, 50, 0, 0, '', 0),
-(21, 13, 6, 10, 0, 0, '', 1),
-(22, 14, 6, 1, 0, 0, '', 0),
-(23, 14, 6, 1, 0, 0, '', 0),
-(24, 14, 6, 5, 0, 0, '', 0),
-(25, 14, 6, 5, 0, 0, '', 0),
-(26, 14, 6, 5, 0, 0, '', 0),
-(27, 14, 6, 55, 0, 0, '', 1),
-(28, 15, 6, 100, 0, 0, '', 0),
-(29, 15, 6, 50, 0, 0, '', 1),
-(30, 16, 6, 50, 0, 0, '', 1),
-(31, 17, 6, 40, 0, 0, '', 1),
-(32, 18, 6, 1, 0, 0, '', 1),
-(33, 19, 6, 10, 0, 0, '', 1),
-(34, 20, 6, 1, 0, 0, '', 1),
-(35, 21, 6, 5, 0, 0, '', 1),
-(36, 22, 6, 4, 0, 0, '', 1),
-(37, 23, 6, 4, 0, 0, '', 0),
-(38, 23, 6, 2, 0, 0, '', 1),
-(39, 24, 4, 10, 0, 0, '', 1);
+(1, 1, 5, 10, 0, 0, '', 1),
+(2, 2, 6, 100, 0, 0, '', 1);
 
 -- --------------------------------------------------------
 
@@ -1907,7 +1703,42 @@ INSERT INTO `logs` (`id`, `action`, `dating`, `uid`) VALUES
 (756, 'login', '1788712983', 1),
 (757, 'login', '1788712984', 1),
 (758, 'login', '1788787255', 1),
-(759, 'login', '1788792140', 1);
+(759, 'login', '1788792140', 1),
+(760, 'Add PR #2', '1788803116', 1),
+(761, 'Active PR#2', '1788803119', 1),
+(762, 'Approve PR#2', '1788803120', 1),
+(763, 'Add PO #2', '1788803126', 1),
+(764, 'Approve PO#2', '1788803128', 1),
+(765, 'Add Receive #3', '1788803137', 1),
+(766, 'Approve Receive#3', '1788803139', 1),
+(767, 'Approve Receive#2', '1788803142', 1),
+(768, 'Add PR #1', '1788803524', 1),
+(769, 'Active PR#1', '1788803526', 1),
+(770, 'Approve PR#1', '1788803527', 1),
+(771, 'Add PO #1', '1788803532', 1),
+(772, 'Approve PO#1', '1788803533', 1),
+(773, 'Add Receive #1', '1788803539', 1),
+(774, 'Approve Receive#1', '1788803540', 1),
+(775, 'Edit Payment #1', '1788803545', 1),
+(776, 'Add quotation #1', '1788803568', 1),
+(777, 'Approve quotation#1', '1788803570', 1),
+(778, 'Add So #1', '1788803577', 1),
+(779, 'Appove So#1', '1788803578', 1),
+(780, 'Add withdrawn #1', '1788803583', 1),
+(781, 'Appove withdrawn#1', '1788803584', 1),
+(782, 'Add receipt #1', '1788803588', 1),
+(783, 'Add Batch #1', '1788803600', 1),
+(784, 'Approve batch#1', '1788803601', 1),
+(785, 'Add Batch #2', '1788803610', 1),
+(786, 'Approve batch#2', '1788803611', 1),
+(787, 'Add farming #1', '1788803746', 1),
+(788, 'Add farming #2', '1788803757', 1),
+(789, 'Appove farming#1', '1788803762', 1),
+(790, 'Appove farming#1', '1788803763', 1),
+(791, 'Appove farming#1', '1788803765', 1),
+(792, 'Add Production #1', '1788803788', 1),
+(793, 'Approve production#1', '1788803790', 1),
+(794, 'Add Receive #2', '1788803797', 1);
 
 -- --------------------------------------------------------
 
@@ -1935,7 +1766,7 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`id`, `typ`, `ref_id`, `supplier_id`, `date`, `adate`, `uid`, `uaid`, `app_id`, `detail`, `value`, `status`) VALUES
-(1, 1, 1, 1, '2026-09-06', '0000-00-00', 1, 1, 9, 'Payment from Receive #1', 50.00, 2);
+(1, 1, 1, 1, '2026-09-07', '0000-00-00', 1, 1, 9, 'Payment from Receive #1', 250.00, 2);
 
 -- --------------------------------------------------------
 
@@ -1950,14 +1781,6 @@ CREATE TABLE `payroll` (
   `year` int(5) NOT NULL,
   `status` int(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `payroll`
---
-
-INSERT INTO `payroll` (`id`, `emp_id`, `salary`, `year`, `status`) VALUES
-(1, 1, 20000.00, 2026, 1),
-(2, 3, 5000.00, 2026, 1);
 
 -- --------------------------------------------------------
 
@@ -1981,7 +1804,7 @@ CREATE TABLE `po` (
 --
 
 INSERT INTO `po` (`id`, `pr_id`, `supplier_id`, `uid`, `uaid`, `date`, `adate`, `status`) VALUES
-(1, 1, 1, 1, 1, '2026-09-06', '0000-00-00', 2);
+(1, 1, 1, 1, 1, '2026-09-07', '0000-00-00', 2);
 
 -- --------------------------------------------------------
 
@@ -2003,7 +1826,7 @@ CREATE TABLE `po_detail` (
 --
 
 INSERT INTO `po_detail` (`id`, `po_id`, `inventory_id`, `num`, `unit_price`, `status`) VALUES
-(1, 1, 1, 1, 50.00, 1);
+(1, 1, 1, 5, 50.00, 1);
 
 -- --------------------------------------------------------
 
@@ -2026,7 +1849,7 @@ CREATE TABLE `pr` (
 --
 
 INSERT INTO `pr` (`id`, `supplier_id`, `uid`, `uaid`, `date`, `adate`, `status`) VALUES
-(1, 1, 1, 1, '2026-09-06', '0000-00-00', 2);
+(1, 1, 1, 1, '2026-09-07', '0000-00-00', 2);
 
 -- --------------------------------------------------------
 
@@ -2051,7 +1874,7 @@ CREATE TABLE `production` (
 --
 
 INSERT INTO `production` (`id`, `batch_id`, `uid`, `uaid`, `date`, `adate`, `detail`, `status`, `app_date`) VALUES
-(1, 0, 1, 1, '2026-09-06', '0000-00-00', '', 3, '2026-09-06');
+(1, 0, 1, 1, '2026-09-07', '0000-00-00', '', 3, '2026-09-07');
 
 -- --------------------------------------------------------
 
@@ -2076,7 +1899,7 @@ CREATE TABLE `production_detail` (
 --
 
 INSERT INTO `production_detail` (`id`, `prod_id`, `inventory_id`, `typ`, `num`, `location_id`, `loss`, `detail`, `status`) VALUES
-(1, 1, 1, 0, 1, 0, 0, '', 1);
+(1, 1, 1, 0, 5, 0, 0, '', 1);
 
 -- --------------------------------------------------------
 
@@ -2098,7 +1921,7 @@ CREATE TABLE `pr_detail` (
 --
 
 INSERT INTO `pr_detail` (`id`, `pr_id`, `inventory_id`, `num`, `unit_price`, `status`) VALUES
-(1, 1, 1, 1, 50.00, 1);
+(1, 1, 1, 5, 50.00, 1);
 
 -- --------------------------------------------------------
 
@@ -2121,7 +1944,7 @@ CREATE TABLE `quotation` (
 --
 
 INSERT INTO `quotation` (`id`, `uid`, `uaid`, `customer_id`, `date`, `adate`, `status`) VALUES
-(1, 1, 1, 1, '2026-09-06', '0000-00-00', 2);
+(1, 1, 1, 1, '2026-09-07', '0000-00-00', 2);
 
 -- --------------------------------------------------------
 
@@ -2143,9 +1966,7 @@ CREATE TABLE `quotation_detail` (
 --
 
 INSERT INTO `quotation_detail` (`id`, `quotation_id`, `inventory_id`, `num`, `unit_price`, `status`) VALUES
-(1, 1, 2, 1, 180.00, 1),
-(2, 1, 4, 1, 185.00, 1),
-(3, 1, 5, 1, 185.00, 1);
+(1, 1, 4, 5, 185.00, 1);
 
 -- --------------------------------------------------------
 
@@ -2171,7 +1992,7 @@ CREATE TABLE `receipt` (
 --
 
 INSERT INTO `receipt` (`id`, `so_id`, `withdrawn_id`, `customer_id`, `uid`, `uaid`, `date`, `adate`, `status`, `app_date`) VALUES
-(1, 1, 0, 1, 1, 1, '2026-09-06', '0000-00-00', 2, '0000-00-00');
+(1, 1, 0, 1, 1, 1, '2026-09-07', '0000-00-00', 2, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -2193,9 +2014,7 @@ CREATE TABLE `receipt_detail` (
 --
 
 INSERT INTO `receipt_detail` (`id`, `receipt_id`, `inventory_id`, `num`, `unit_price`, `status`) VALUES
-(1, 1, 2, 1, 180.00, 1),
-(2, 1, 4, 1, 185.00, 1),
-(3, 1, 5, 1, 185.00, 1);
+(1, 1, 4, 5, 185.00, 1);
 
 -- --------------------------------------------------------
 
@@ -2221,7 +2040,7 @@ CREATE TABLE `receive` (
 --
 
 INSERT INTO `receive` (`id`, `rec_typ`, `ref_id`, `supplier_id`, `date`, `adate`, `uid`, `uaid`, `status`, `po_id`) VALUES
-(1, 1, 0, 1, '2026-09-06', '0000-00-00', 1, 1, 2, 1),
+(1, 1, 0, 1, '2026-09-07', '0000-00-00', 1, 1, 2, 1),
 (2, 2, 0, 0, '0000-00-00', '0000-00-00', 1, 0, 1, 1);
 
 -- --------------------------------------------------------
@@ -2245,8 +2064,8 @@ CREATE TABLE `receive_detail` (
 --
 
 INSERT INTO `receive_detail` (`id`, `receive_id`, `inventory_id`, `location_id`, `num`, `unit_price`, `status`) VALUES
-(1, 1, 1, 0, 1, 50.00, 1),
-(2, 2, 4, 0, 1, 185.00, 1);
+(1, 1, 1, 0, 5, 50.00, 1),
+(2, 2, 4, 0, 5, 185.00, 1);
 
 -- --------------------------------------------------------
 
@@ -2270,7 +2089,7 @@ CREATE TABLE `so` (
 --
 
 INSERT INTO `so` (`id`, `quotation_id`, `customer_id`, `uid`, `uaid`, `date`, `adate`, `status`) VALUES
-(1, 1, 1, 1, 1, '2026-09-06', '0000-00-00', 2);
+(1, 1, 1, 1, 1, '2026-09-07', '0000-00-00', 2);
 
 -- --------------------------------------------------------
 
@@ -2292,9 +2111,7 @@ CREATE TABLE `so_detail` (
 --
 
 INSERT INTO `so_detail` (`id`, `so_id`, `inventory_id`, `num`, `unit_price`, `status`) VALUES
-(1, 1, 2, 1, 180.00, 1),
-(2, 1, 4, 1, 185.00, 1),
-(3, 1, 5, 1, 185.00, 1);
+(1, 1, 4, 5, 185.00, 1);
 
 -- --------------------------------------------------------
 
@@ -2335,13 +2152,6 @@ CREATE TABLE `timestamp` (
   `in` datetime DEFAULT NULL,
   `out` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `timestamp`
---
-
-INSERT INTO `timestamp` (`id`, `emp_id`, `status`, `in`, `out`) VALUES
-(1, 3, 1, '2026-09-06 18:29:54', '2026-09-06 18:30:11');
 
 -- --------------------------------------------------------
 
@@ -2438,7 +2248,7 @@ CREATE TABLE `withdrawn` (
 --
 
 INSERT INTO `withdrawn` (`id`, `so_id`, `wd_typ`, `uid`, `uaid`, `date`, `adate`, `status`, `customer_id`) VALUES
-(1, 1, 0, 1, 1, '2026-09-06', '0000-00-00', 2, 1);
+(1, 1, 0, 1, 1, '2026-09-07', '0000-00-00', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -2461,9 +2271,7 @@ CREATE TABLE `withdrawn_detail` (
 --
 
 INSERT INTO `withdrawn_detail` (`id`, `withdrawn_id`, `inventory_id`, `location_id`, `unit_price`, `num`, `status`) VALUES
-(1, 1, 2, 0, 180, 1, 1),
-(2, 1, 4, 0, 185, 1, 1),
-(3, 1, 5, 0, 185, 1, 1);
+(1, 1, 4, 0, 185, 5, 1);
 
 --
 -- Indexes for dumped tables
@@ -2747,13 +2555,13 @@ ALTER TABLE `withdrawn_detail`
 -- AUTO_INCREMENT for table `acc`
 --
 ALTER TABLE `acc`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `acc_detail`
 --
 ALTER TABLE `acc_detail`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `acc_typ`
@@ -2783,13 +2591,13 @@ ALTER TABLE `areceive`
 -- AUTO_INCREMENT for table `batch`
 --
 ALTER TABLE `batch`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `batch_detail`
 --
 ALTER TABLE `batch_detail`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -2807,13 +2615,13 @@ ALTER TABLE `employee_info`
 -- AUTO_INCREMENT for table `farming`
 --
 ALTER TABLE `farming`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `farming_detail`
 --
 ALTER TABLE `farming_detail`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `inventory`
@@ -2873,7 +2681,7 @@ ALTER TABLE `location_row`
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=760;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=795;
 
 --
 -- AUTO_INCREMENT for table `payment`
@@ -2885,7 +2693,7 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `payroll`
 --
 ALTER TABLE `payroll`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `po`
@@ -2933,7 +2741,7 @@ ALTER TABLE `quotation`
 -- AUTO_INCREMENT for table `quotation_detail`
 --
 ALTER TABLE `quotation_detail`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `receipt`
@@ -2945,7 +2753,7 @@ ALTER TABLE `receipt`
 -- AUTO_INCREMENT for table `receipt_detail`
 --
 ALTER TABLE `receipt_detail`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `receive`
@@ -2969,7 +2777,7 @@ ALTER TABLE `so`
 -- AUTO_INCREMENT for table `so_detail`
 --
 ALTER TABLE `so_detail`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `supplier`
@@ -2981,7 +2789,7 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT for table `timestamp`
 --
 ALTER TABLE `timestamp`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `uig`
@@ -3011,7 +2819,7 @@ ALTER TABLE `withdrawn`
 -- AUTO_INCREMENT for table `withdrawn_detail`
 --
 ALTER TABLE `withdrawn_detail`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
