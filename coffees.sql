@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 06, 2026 at 07:26 PM
+-- Generation Time: Sep 07, 2026 at 04:42 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -958,10 +958,10 @@ CREATE TABLE `inventory` (
 
 INSERT INTO `inventory` (`id`, `name`, `description`, `typ_id`, `cate_id`, `location_id`, `uid`, `num`, `buy`, `sale`, `cp`, `status`) VALUES
 (1, 'เมล็ดArabica', '', 1, 1, 2, 1, 0, 50.00, 0.00, 10, 1),
-(2, 'Bluekoff Plantation: A3 Blue Light', '', 3, 1, 1, 1, 0, 0.00, 180.00, 10, 1),
+(2, 'A3 Blue Light', '', 3, 1, 1, 1, 0, 0.00, 180.00, 10, 1),
 (3, 'เมล็ดRobusta', '', 1, 2, 2, 1, 0, 50.00, 0.00, 10, 1),
-(4, 'A4 Medium Roast', '', 3, 1, 0, 0, 0, 0.00, 185.00, 10, 1),
-(5, 'A4.5 Medium-Dark Roast', '', 3, 1, 0, 0, 0, 0.00, 185.00, 10, 1),
+(4, 'A Medium', '', 3, 1, 0, 0, 0, 0.00, 185.00, 10, 1),
+(5, 'A Medium-Dark', '', 3, 1, 0, 0, 0, 0.00, 185.00, 10, 1),
 (6, 'Coffee Cherry', '', 2, 1, 0, 0, 0, 0.00, 0.00, 10, 1);
 
 -- --------------------------------------------------------
@@ -1905,7 +1905,9 @@ INSERT INTO `logs` (`id`, `action`, `dating`, `uid`) VALUES
 (754, 'cannot login', '1788712450', 0),
 (755, 'login', '1788712453', 1),
 (756, 'login', '1788712983', 1),
-(757, 'login', '1788712984', 1);
+(757, 'login', '1788712984', 1),
+(758, 'login', '1788787255', 1),
+(759, 'login', '1788792140', 1);
 
 -- --------------------------------------------------------
 
@@ -2871,7 +2873,7 @@ ALTER TABLE `location_row`
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=758;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=760;
 
 --
 -- AUTO_INCREMENT for table `payment`
