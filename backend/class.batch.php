@@ -43,7 +43,7 @@ class batch
                         <tr>
                             <th class='text-center'>No.</th>
                             <th class='text-center'>Date</th>
-                            <th class='text-center'>Customer</th>
+                            <th class='text-center'>Process</th>
                             <th class='text-center'>Status</th>
                     <?php
 					if (($acl == '2') or ($acl > '5')) {
@@ -81,11 +81,11 @@ class batch
                             echo "<td>";
                             if ($cdr['typ'] == 1)
                             {
-                                echo "From Farm";
+                                echo "Send to the farm";
                             }
                             elseif ($cdr['typ'] == 2)
                             {
-                                echo "From Production";
+                                echo "Send to the production.";
                             }
                             echo "</td>";
                             echo "<td>";
