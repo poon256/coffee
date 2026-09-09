@@ -1,6 +1,6 @@
 ระบบบริษัทผลิตกาเเฟ
 ผมได้ออกเเบบให้ระบบมีทำงานคือ
-1.บริษัทสั่งสินค้า PR() -> PO() -> Received -> Payment -> Account
+1.บริษัทสั่งสินค้า PR -> PO -> Received -> Payment -> Account
 2.ลูกค้าสั่งสินค้า Questions -> So(Slae Order) -> Withdraw -> Re
 3.สำหรับเเผนการผลิต Batch -> Farming  ,
                   Batch -> Production
