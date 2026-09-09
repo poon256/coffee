@@ -1,4 +1,3 @@
-```php
 <?php
 session_start();
 require_once('../config/class.connect.php');
@@ -7,14 +6,14 @@ $msg = "";
 
 if (isset($_POST['register'])) {
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $user = $_POST['user'];
+    $pass = md5($_POST['pass']);
     $mail = $_POST['mail'];
 
     $conn = new connect();
 
     // เช็ค Email ซ้ำ
-    $sql = "selcet * from customer where mail = '".$mail."'";
+    $sql = "select * from customer where mail = '".$mail."'";
     $res = $conn->query($sql);
 
     if ($res->rowCount() > 0) {
@@ -24,14 +23,12 @@ if (isset($_POST['register'])) {
     } else {
 
         $sql = "insert into customer set
-                username = '".$username."',
-                password = '".$password."',
-                mail = '".$mail."',
-                status = '1'";
+        user = '".$user."',
+        pass = '".$pass."',
+        mail = '".$mail."',
+        status = '1'";
 
-        $conn->query($sql);
-
-        $msg = "สมัครสมาชิกสำเร็จ";
+$conn->query($sql);
     }
 }
 ?>
@@ -79,7 +76,7 @@ if (isset($_POST['register'])) {
                             <label>ชื่อผู้ใช้</label>
 
                             <input type="text"
-                                   name="username"
+                                   name="user"
                                    class="form-control"
                                    required>
                         </div>
@@ -88,7 +85,7 @@ if (isset($_POST['register'])) {
                             <label>รหัสผ่าน</label>
 
                             <input type="password"
-                                   name="password"
+                                   name="pass"
                                    class="form-control"
                                    required>
                         </div>

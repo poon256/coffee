@@ -89,11 +89,6 @@ while ($cdr = $res->fetch())
 ?>
 
 </div>
-
-<div class="footer">
-    Coffes Making 2568 / Prototype1
-</div>
-
 </body>
 </html>
 
@@ -177,6 +172,8 @@ class det
         }
     }
 }
+
 ?>
+
 </body>
 </html>

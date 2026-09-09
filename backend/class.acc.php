@@ -464,7 +464,6 @@ class acc
 						</tr>
 						<tr>
                         <td colspan='2' class='text-center'>
-                        <input type="button" value="Print" onclick="window.open('print.php?cat=acc&typ=det&id=<?php echo $id;?>','_self')">
                         <input type="button" value="Back" onclick="window.open('index.php?option=acc&task=def','_self')">
                         </td>
                     </tr>

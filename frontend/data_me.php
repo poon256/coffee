@@ -14,19 +14,19 @@ $customer_id = $_SESSION['customer_id'];
 
 if (isset($_POST['save'])) {
 
-    $username = $_POST['username'];
+    $user = $_POST['user'];
     $mail = $_POST['mail'];
-    $password = $_POST['password'];
+    $pass = $_POST['pass'];
 
     $sql = "update customer set
-            username = '".$username."',
+            user = '".$user."',
             mail = '".$mail."',
-            password = '".$password."'
+            pass = '".md5($pass)."'
             WHERE id = '".$customer_id."'";
 
     $conn->query($sql);
 
-    $_SESSION['customer_name'] = $username;
+    $_SESSION['customer_name'] = $user;
 
     header("Location: data_me.php");
     exit;
@@ -36,15 +36,13 @@ if (isset($_POST['save'])) {
 $sql = "select * from customer where id = '".$customer_id."'";
 $res = $conn->query($sql);
 
-$username = "";
+$user = "";
 $mail = "";
-$password = "";
 
 while ($cdr = $res->fetch()) {
 
-    $username = $cdr['username'];
+    $user = $cdr['user'];
     $mail = $cdr['mail'];
-    $password = $cdr['password'];
 
 }
 ?>
@@ -88,9 +86,9 @@ while ($cdr = $res->fetch()) {
                     ชื่อ :
                 </label>
                 <input type="text"
-                       name="username"
+                       name="user"
                        class="form-control"
-                       value="<?php echo htmlspecialchars($username); ?>"
+                       value="<?php echo htmlspecialchars($user); ?>"
                        required>
             </div>
             <div class="mb-3">
@@ -105,12 +103,12 @@ while ($cdr = $res->fetch()) {
             </div>
             <div class="mb-3">
                 <label>
-                    รหัสผ่าน :
+                    รหัสผ่านใหม่ :
                 </label>
                 <input type="password"
-                       name="password"
+                       name="pass"
                        class="form-control"
-                       value="<?php echo htmlspecialchars($password); ?>"
+                       placeholder="กรอกรหัสผ่านใหม่"
                        required>
             </div>
             <button type="submit"

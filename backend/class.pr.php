@@ -368,7 +368,6 @@ class pr
                     </tr>
                     <tr>
                         <td colspan='2' class='text-center'>
-                            <input type="button" value="print" onclick="window.open('point.php?cat=pr&typ=det&id=<?php echo $id;?>','_self')">
                             <input type="button" value="Back" onclick="window.open('index.php?option=pr&task=def','_self')">
                         </td>
                     </tr>

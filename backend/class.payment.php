@@ -136,8 +136,11 @@ class payment
                     <tbody>
                         <?php
                         $a = 1;
-                        $sql = "select `supplier`.`name` as `name`, `receive`.`id` as `id`, `receive`.`status` as `status`, `receive`.`date` as `date`, (select `users`.`name` from `users` where `users`.`status` = '1' and `users`.`id` = `receive`.`uaid`) as `uaid` from `receive`, `supplier`
-                        where `receive`.`supplier_id` = `supplier`.`id` and `receive`.`status` = '2' and `receive`.`id` not in (select `payment`.`ref_id` from `payment` where `payment`.`status` > 0)";
+                        $sql = "select `supplier`.`name` as `name`,`receive`.`id` as `id`,`receive`.`status` as `status`,`receive`.`date` as `date`,
+                        (select `users`.`name` from `users`where `users`.`status` = '1'and `users`.`id` = `receive`.`uaid`) as `uaid`
+                        from `receive`, `supplier`
+                        where `receive`.`supplier_id` = `supplier`.`id` and `receive`.`status` = '2' and `receive`.`rec_typ` = '1' and `receive`.`id` not in
+                        (select `payment`.`ref_id` from `payment` where `payment`.`status` > 0)";
 						//echo $sql;
                         $conn = new connect();
                         $res = $conn->query($sql);
@@ -267,189 +270,259 @@ class payment
     }
 
     function approval() 
+{
+    $id = $_REQUEST['id'];
+    $typ_id = $_REQUEST['typ_id'];
+    $app_id = $_REQUEST['app_id'];
+    $value = $_REQUEST['value'];
+
+    $conn = new connect();
+
+    $sql = "select `status`
+    from `payment`
+    where `id` = '".$id."'";
+
+    $res = $conn->query($sql);
+
+    $status = 0;
+
+    while ($cdr = $res->fetch())
     {
-        $id = $_REQUEST['id'];
-        $typ_id = $_REQUEST['typ_id'];
-        $app_id = $_REQUEST['app_id'];
-        $value = $_REQUEST['value'];
-		$conn = new connect();
-		$sql = "update `payment` set `status` = '2', `app_id` = '".$app_id."', `app_id` = '".$app_id."', `uaid` = '".$_SESSION['uid']."'  where `id` = '".$id."'";
-		$conn->query($sql);
-        $sql = "insert into acc set typ = '4', action = 'Payment', date = '".date('Y-m-d')."', detail = 'Data from Payment Rec#".$id."', `uid` = '".$_SESSION['uid']."'";
-        $acc_id = $conn->query_lastid($sql);
-        $sql = "insert into `acc_detail` set `acc_id` = '".$acc_id."', `typ_id` = '9', `typ` = '1', `value` = '".$value."'";
-        $res = $conn->query($sql);
-        $sql = "insert into `acc_detail` set `acc_id` = '".$acc_id."', `typ_id` = '".$typ_id."', `typ` = '2', `value` = '".$value."'";
-        $res = $conn->query($sql);
-        if ($stat == 2)
-		{
-			$sql = "update payment set status = '".$stat."', `uaid` = '".$_SESSION['uid']."' where id = '".$id."' ";
-            $conn->save_logs("Approve Payment#".$id, $_SESSION['uid']);
-		}
-		header('location:index.php?option=payment&task=def');
+        $status = $cdr['status'];
     }
 
-    function edit() 
+    if ($status == 1)
     {
-        $conn = new connect();
-        $id = $_REQUEST['id'];
-        if ($id == 0) 
+        $sql = "update `payment` set
+        `status` = '2',
+        `app_id` = '".$app_id."',
+        `uaid` = '".$_SESSION['uid']."'
+        where `id` = '".$id."'";
+
+        $conn->query($sql);
+
+        $sql = "insert into `acc` set
+        `typ` = '4',
+        `action` = 'Payment',
+        `date` = '".date('Y-m-d')."',
+        `detail` = 'Data from Payment Rec#".$id."',
+        `uid` = '".$_SESSION['uid']."'";
+
+        $acc_id = $conn->query_lastid($sql);
+
+        $sql = "insert into `acc_detail` set
+        `acc_id` = '".$acc_id."',
+        `typ_id` = '9',
+        `typ` = '1',
+        `value` = '".$value."'";
+
+        $conn->query($sql);
+
+        $sql = "insert into `acc_detail` set
+        `acc_id` = '".$acc_id."',
+        `typ_id` = '".$typ_id."',
+        `typ` = '2',
+        `value` = '".$value."'";
+
+        $conn->query($sql);
+
+        $conn->save_logs(
+            "Approve Payment#".$id,
+            $_SESSION['uid']
+        );
+    }
+
+    header('location:index.php?option=payment&task=def');
+}
+
+function edit() 
+{
+    $conn = new connect();
+
+    $id = $_REQUEST['id'];
+
+    $date = '';
+    $supplier_id = '';
+    $ref = '';
+
+    if ($id == 0) 
+    {
+        $head = "Add";
+
+        $ref = $_REQUEST['ref'];
+
+        $sql = "select * from `receive`
+        where `id` = '".$ref."'
+        and `status` = '2'
+        and `rec_typ` = '1'";
+
+        $res = $conn->query($sql);
+
+        while ($cdr = $res->fetch()) 
         {
-            $head = "Add";
-            $sql = "select * from pr where id = '".$_REQUEST['ref']."'";
-            $ref = $_REQUEST['ref'];
-            $res = $conn->query($sql);
-            while ($cdr = $res->fetch()) 
-            {
-                $date = $cdr['date'];
-                $supplier_id = $cdr['supplier_id'];
-            }
+            $date = $cdr['date'];
+            $supplier_id = $cdr['supplier_id'];
         }
-        else 
+    }
+    else 
+    {
+        $head = "Edit";
+
+        $sql = "select * from `payment`
+        where `id` = '".$id."'";
+
+        $res = $conn->query($sql);
+
+        while ($cdr = $res->fetch()) 
         {
-            $head = "Edit";
-            $sql = "select * from receive where id = '".$id."'";
-            $res = $conn->query($sql);
-            while ($cdr = $res->fetch()) 
-            {
-                $date = $cdr['date'];
-                $ref = $cdr['po_id'];
-                $supplier_id = $cdr['supplier_id'];
-            }
+            $date = $cdr['date'];
+            $supplier_id = $cdr['supplier_id'];
+            $ref = $cdr['ref_id'];
         }
-        ?>
-        <div class='container'>
-            <div class='row'>
-                <div class='col-12'>
-				<h2>Payment</h2>
-                <form action="index.php" method="get">
-                <table class='table table-bordered table-striped'>
-                    <tr>
-                        <td colspan='2' class='text-center'><?php echo $head;?> Payment</td>
-                    </tr>
-                    <tr>
-                        <td>Supplier</td>
-                        <td>
-                            <?php
-                            $sql = "select * from supplier where status > '0' and `id` = '".$supplier_id."'";
-                            $res = $conn->query($sql);
-                            while ($cdr = $res->fetch()) 
-                            {
-                                echo $cdr['name'];
-								echo "<input type='hidden' name='supplier' value='".$cdr['id']."' />";
-                            }
-                            ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>User</td>
-                        <td>
-                            <?php echo $_SESSION['uname'];?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Date</td>
-                        <td>
-                            <input type = 'text' id='datepicker' name='date' value='<?php echo $date;?>'>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Reference from Receive </td>
-                        <td>
-                            <input name='ref' value='<?php echo $ref;?>' readonly />
-                        </td>
-                    </tr>
+    }
+
+    ?>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-12'>
+                <h2><?php echo $head;?> Payment</h2>
+
+                <form action='index.php' method='get'>
+
+                    <table class='table table-bordered table-striped'>
+
+                        <tr>
+                            <td>Receive ID</td>
+                            <td>
+                                <?php echo $ref;?>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Supplier</td>
+                            <td>
+                                <?php
+                                $sql = "select * from `supplier`
+                                where `id` = '".$supplier_id."'";
+
+                                $res = $conn->query($sql);
+
+                                while ($cdr = $res->fetch())
+                                {
+                                    echo $cdr['name'];
+                                }
+                                ?>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Date</td>
+                            <td>
+                                <input type='text'
+                                id='datepicker'
+                                name='date'
+                                value='<?php echo $date;?>' />
+                            </td>
+                        </tr>
                     <tr>
                         <td colspan='2' class='text-center'>
-                            <input type="submit" value="Save">
-                            <input type="button" value="Back" onclick="window.open('index.php?option=payment&task=def','_self')">
-                            <input type="hidden" name="option" value="payment">
-                            <input type="hidden" name="task" value="save">
+                        <input type="submit" value="Save">
+                        <input type="button"value="Back" onclick="window.open('index.php?option=payment&task=def','_self')">
+                        <input type="hidden" name="option"value="payment">
+                        <input type="hidden" name="task" value="save">
+                        <input type='hidden' name='id' value='<?php echo $id;?>'>
+                        <input type='hidden' name='ref' value='<?php echo $ref;?>'>
+                        <input type='hidden' name='supplier' value='<?php echo $supplier_id;?>'>
                         </td>
                     </tr>
-                </table>
-                <table class='table table-bordered table-striped'>
-                    <tr>
-                        <td class='text-center'>No.</td>
-                        <td class='text-center'>Name</td>
-                        <td class='text-center'>Cost</td>
-                        <td class='text-center'>Number</td>
-                    </tr>
-                    <?php
-                    $a = 1;
-					if ($id == 0)
-					{
-                    $sql = "select `inventory`.`name` as `name`
-                    , (
-					select `po_detail`.`unit_price` from `po_detail` where `po_detail`.`status` = '1' and `inventory`.`id` = `po_detail`.`inventory_id` and `po_detail`.`po_id` = '".$ref."'
-					)  as receive
-                    , `inventory`.`id` as stid
-                    , (
-                    select `num` from `po_detail`
-                    where `po_detail`.`status` > 0 
-                    and `po_detail`.`inventory_id` = `inventory`.`id`
-                    and `po_detail`.`po_id` = '".$ref."'
-                    ) as `num`
-                    from `inventory` 
-                    where `inventory`.`status` > 0 having `num` <> ''";
-					}
-					else
-					{
-                    $sql = "select `inventory`.`name` as name
-                    , ifnull((
-					select `receive_detail`.`unit_price` from `receive_detail` where `receive_detail`.`status` = '1' and `inventory`.`id` = `receive_detail`.`inventory_id` and `receive_detail`.`receive_id` = '".$id."'
-					) , `inventory`.`buy`) as receive
-                    , `inventory`.`id` as stid
-                    , (
-                    select num from receive_detail 
-                    where `receive_detail`.`status` > 0 
-                    and `receive_detail`.`inventory_id` = `inventory`.`id`
-                    and `receive_detail`.`receive_id` = '".$id."'
-                    ) as num
-                    from inventory 
-                    where `inventory`.`status` > 0 having `num` <> ''";
-					}
-					//echo $sql;
-                    $res = $conn->query($sql);
-                    while ($cdr = $res->fetch()) 
-                    {
-                        echo "<tr>";
-                        echo "<td class='text-center'>";
-                        echo $a;
-                        echo "</td>";
-                        echo "<td>";
-                        echo $cdr['name'];
-                        echo "</td>";
-                        echo "<td class='text-end'>";
-                        echo "<input type='hidden' name='unit_price-".$a."' value='".$cdr['receive']."' />";
-						echo $cdr['receive'];
-                        echo "</td>";
-                        echo "<td>";
-                        if ($cdr['num'] == null) 
+
+                    </table>
+
+                    <table class='table table-bordered table-striped'>
+
+                        <tr>
+                            <td class='text-center'>No.</td>
+                            <td class='text-center'>Name</td>
+                            <td class='text-center'>Unit Price</td>
+                            <td class='text-center'>Number</td>
+                            <td class='text-center'>Total</td>
+                            
+                        </tr>
+
+                        <?php
+
+                        $a = 1;
+                        $net = 0;
+
+                        $sql = "select
+                        `inventory`.`name` as `name`,
+                        `inventory`.`id` as `stid`,
+                        `receive_detail`.`num` as `num`,
+                        `receive_detail`.`unit_price` as `receive`
+                        from `inventory`, `receive_detail`
+                        where `inventory`.`status` > 0
+                        and `receive_detail`.`status` > 0
+                        and `receive_detail`.`inventory_id` = `inventory`.`id`
+                        and `receive_detail`.`receive_id` = '".$ref."'";
+
+                        $res = $conn->query($sql);
+
+                        while ($cdr = $res->fetch()) 
                         {
-                            $num = 0;
-                        }
-                        else
-                        {
+                            echo "<tr>";
+
+                            echo "<td class='text-center'>";
+                            echo $a;
+                            echo "</td>";
+
+                            echo "<td>";
+                            echo $cdr['name'];
+                            echo "</td>";
+
+                            echo "<td class='text-end'>";
+                            echo number_format($cdr['receive'],2);
+                            echo "</td>";
+
+                            echo "<td>";
+                            echo $cdr['num'];
+                            echo "</td>";
+
+                            $receive = $cdr['receive'];
                             $num = $cdr['num'];
+
+                            $total = $receive * $num;
+
+                            echo "<td class='text-end'>";
+                            echo number_format($total,2);
+                            echo "</td>";
+
+                            echo "</tr>";
+
+                            $net = $net + $total;
+                            $a++;
                         }
-                        echo "<input type='number' name='num-".$a."' value='".$num."' />";
-                        echo "<input type='hidden' name='id-".$a."' value='".$cdr['stid']."' />";
-                        echo "</td>";
-                        echo "</tr>";
-                        $a++;
-                    }
-                    echo "<input type='hidden' name='limit' value='".$a."' />";
-                    echo "<input type='hidden' name='id' value='".$id."' />";
-                    ?>
-                </table>
+
+                        ?>
+
+                        <tr>
+                            <td colspan='4'>
+                                Net Total
+                            </td>
+
+                            <td class='text-end'>
+                                <?php echo number_format($net,2);?>
+                            </td>
+                        </tr>
+
+                    </table>
+
                 </form>
-                </div>
+
             </div>
         </div>
-        </div>
-        <?php
-    }
+    </div>
+    <?php
+}
 
     function del() 
     {
@@ -472,58 +545,91 @@ class payment
 		header('location:index.php?option=payment&task=def');
     }
 
-    function save() 
+function save() 
+{
+    $conn = new connect();
+
+    $id = $_REQUEST['id'];
+    $ref = $_REQUEST['ref'];
+    $supplier_id = $_REQUEST['supplier'];
+    $date = $_REQUEST['date'];
+
+    if ($id == 0) 
     {
-        $conn = new connect();
-        $id = $_REQUEST['id'];
-        $ref = $_REQUEST['ref'];
-        $supplier_id = $_REQUEST['supplier'];
-        $date = $_REQUEST['date'];
-    
-        if ($id == 0) 
-        {
-            $sql = "select                
-            sum(`num` * `unit_price`) as `total`               
-            from `receive_detail`               
-            where `receive_id` = '".$ref."'
-            and `status` > 0";
+        $sql = "select
+        sum(`num` * `unit_price`) as `total`
+        from `receive_detail`
+        where `receive_id` = '".$ref."'
+        and `status` > 0";
 
         $res = $conn->query($sql);
+
         $value = 0;
 
         while ($cdr = $res->fetch())
         {
-            $value = $cdr['total'];
+            if ($cdr['total'] != null)
+            {
+                $value = $cdr['total'];
+            }
         }
-        {
-            $sql = "insert into `payment` set
-                `typ` = '1',
-                `ref_id` = '".$ref."',
-                `supplier_id` = '".$supplier_id."',
-                `date` = '".$date."',
-                `uid` = '".$_SESSION['uid']."',
-                `detail` = 'Payment from Receive #".$ref."',
-                `value` = '".$value."',
-                `status` = '1'";
-            $conn->query($sql);
-            $conn->save_logs("Edit Payment #".$ref, $_SESSION['uid']);
-        }
-    
+
+        $sql = "insert into `payment` set
+        `typ` = '1',
+        `ref_id` = '".$ref."',
+        `supplier_id` = '".$supplier_id."',
+        `date` = '".$date."',
+        `uid` = '".$_SESSION['uid']."',
+        `detail` = 'Payment from Receive #".$ref."',
+        `value` = '".$value."',
+        `status` = '1'";
+
+        $conn->query($sql);
+
+        $conn->save_logs(
+            "Add Payment #".$ref,
+            $_SESSION['uid']
+        );
     }
-            header('location:index.php?option=payment&task=def');
+    else
+    {
+        $sql = "update `payment` set
+        `supplier_id` = '".$supplier_id."',
+        `date` = '".$date."'
+        where `id` = '".$id."'";
+
+        $conn->query($sql);
+
+        $conn->save_logs(
+            "Edit Payment #".$id,
+            $_SESSION['uid']
+        );
     }
 
-    function det()
+    header('location:index.php?option=payment&task=def');
+}
+
+function det()
+{
+    $conn = new connect();
+
+    $id = $_REQUEST['id'];
+
+    $supplier = '';
+    $date = '';
+    $ref = '';
+
+    $sql = "select * from `payment`
+    where `id` = '".$id."'";
+
+    $res = $conn->query($sql);
+
+    while ($cdr = $res->fetch())
     {
-        $conn = new connect();
-		$id = $_REQUEST['id'];
-		$sql = "select * from `receive` where `id` = '".$id."'";
-		$res = $conn->query($sql);
-		while ($cdr = $res->fetch())
-		{
-			$supplier = $cdr['supplier_id'];
-			$date = $cdr['date'];
-		}
+        $supplier = $cdr['supplier_id'];
+        $date = $cdr['date'];
+        $ref = $cdr['ref_id'];
+    }
         ?>
         <div class='container'>
             <div class='row'>
@@ -567,7 +673,6 @@ class payment
                     </tr>
                     <tr>
                         <td colspan='2' class='text-center'>
-                        <input type='button' value='Print' onclick='window.open("print.php?cat=payment&typ=all","_self")'>
                         <input type='button' value='Back' onclick='window.open("index.php?option=payment&task=def","_self")'>
                         </td>
                     </tr>
@@ -591,7 +696,7 @@ class payment
 				    where `inventory`.`status` > 0
                     and `receive_detail`.`status` > 0
                     and `receive_detail`.`inventory_id` = `inventory`.`id`
-                    and `receive_detail`.`receive_id` = '".$id."'";
+                    and `receive_detail`.`receive_id` = '".$ref."'";
                     $res = $conn->query($sql);
                     while ($cdr = $res->fetch()) 
                     {

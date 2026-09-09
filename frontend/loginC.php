@@ -4,15 +4,15 @@ require_once("../config/class.connect.php");
 
 if (isset($_REQUEST['login']))
 {
-    $username = $_REQUEST['username'];
-    $password = $_REQUEST['password'];
+    $user = $_REQUEST['user'];
+    $pass = md5($_REQUEST['pass']);
 
     $conn = new connect();
 
-    $sql = "SELECT * FROM customer
-            WHERE username = '".$username."'
-            AND password = '".$password."'
-            AND status = '1'";
+    $sql = "select * from customer
+            where user = '".$user."'
+            and pass = '".$pass."'
+            and status = '1'";
 
     $res = $conn->query($sql);
 
@@ -63,17 +63,17 @@ if (isset($_REQUEST['login']))
             <form method="post">
 
                 <div class="mb-3">
-                    <label>Username</label>
+                    <label>User</label>
                     <input type="text"
-                           name="username"
+                           name="user"
                            class="form-control"
                            required>
                 </div>
 
                 <div class="mb-3">
-                    <label>Password</label>
+                    <label>pass</label>
                     <input type="password"
-                           name="password"
+                           name="pass"
                            class="form-control"
                            required>
                 </div>
