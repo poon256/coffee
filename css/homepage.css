@@ -1,0 +1,110 @@
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar container */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #4e3c2e;
+    padding: 10px 20px;
+    color: white;
+}
+
+/* Logo */
+.navbar .logo {
+    margin-right: 20px;
+}
+
+.navbar .logo img {
+    height: 40px;
+}
+
+/* Menu */
+.navbar .menu {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-grow: 1;
+}
+
+.navbar .menu li {
+    position: relative;
+}
+
+.navbar .menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px 10px;
+    display: block;
+}
+
+.navbar .menu a:hover {
+    background-color: #3a2a1e;
+    border-radius: 4px;
+}
+
+.menu li:hover .dropdown-content {
+    display: block;
+}
+
+/* Right-aligned item */
+.menu .right {
+    margin-left: auto;
+    text-align:  end;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .menu {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+.card-container {
+    gap: 16px; /* Space between cards */
+    padding: 16px; /* Padding around the container */
+    background-image: url("https://www.basenton.com/wp-content/uploads/2024/06/Coffee-Beans.webp");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    margin: 0;
+    height: 100vh; /* ทำให้สูงเท่ากับหน้าจอ */
+    justify-content: center; /* จัดแนวนอนให้อยู่ตรงกลาง */
+    align-items: center; /* จัดแนวตั้งให้อยู่ตรงกลาง */
+    
+  }
+.btn-custom {
+    height: 300px;
+    width: 350px;
+    margin: 0 10px 0 10px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #574545;
+    background-color: #cac3c3;
+    border: none;
+}
+.btn-custom:hover {
+    background-color: #555;
+}
+.pb{
+    font-size: 4rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 2rem;
+}

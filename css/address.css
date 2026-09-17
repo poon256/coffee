@@ -1,0 +1,33 @@
+.account-layout {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.account-layout .left-menu {
+    width: 220px;
+    flex-shrink: 0;
+}
+
+.account-layout .datame {
+    flex: 1;
+    margin-left: 30px;
+    padding: 20px;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+.account-layout .datame input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.account-layout .datame button {
+    background-color: #4e3c2e;
+    border: none;
+}
+
+.account-layout .datame button:hover {
+    background-color: #3a2a1e;
+}
